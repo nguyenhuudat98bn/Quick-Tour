@@ -28,7 +28,7 @@ class BookTickerViewController: UIViewController,UITableViewDataSource,UITableVi
         addressText.text = UserDefaults.standard.object(forKey: "address") as? String
         dayText.text = UserDefaults.standard.object(forKey: "day") as? String
         cmtLabel.text = UserDefaults.standard.object(forKey: "cmt") as? String
-        
+        userCmt.text = UserDefaults.standard.object(forKey: "name") as? String
         ref = Database.database().reference()
 
         super.viewDidLoad()
@@ -84,6 +84,7 @@ class BookTickerViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBAction func sentCmt(_ sender: UIButton){
         UserDefaults.standard.set(cmtText.text, forKey: "cmt")
         ref.child("coment").setValue(cmtText.text)
+        cmtLabel.text = UserDefaults.standard.object(forKey: "cmt") as? String
         userCmt.text = UserDefaults.standard.object(forKey: "name") as? String
         
     }
